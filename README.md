@@ -8,6 +8,7 @@ Small, no-deps Flask app that reformats a pasted **Statname “Summary”** bloc
   - `HU {bb/100}bb/100 over {Hands} hands`
   - `--`
   - `{Stake}NL {bb/100}bb/100 over {Hands} hands` (only if **Hands > 10,000**)
+  - `--`
   - Final line is **today’s date** in `yyyymmdd`
 - Rounds `bb/100` to 1 decimal (trims trailing `.0`)
 - Understands hands like `193k`, `8.1k`, `2.5m`
