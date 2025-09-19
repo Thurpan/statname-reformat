@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Statname Notes Formatter</title>
+  <title>Statname Reformat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="/static/styles.css" rel="stylesheet" />
 </head>
@@ -17,13 +17,17 @@
       </div>
 
       <div class="panel">
-        <label for="outputBox">Output (auto-copied to clipboard):</label>
+        <label for="outputBox">Output:</label>
         <textarea id="outputBox" readonly spellcheck="false" placeholder="Formatted result will appear here…"></textarea>
+        <div class="actions" style="justify-content:flex-end; margin-top:8px;">
+          <button id="copyBtn" title="Copy output to clipboard">Copy</button>
+        </div>
       </div>
     </div>
 
     <div class="actions">
       <button id="formatBtn">Format</button>
+      <button id="pasteBtn" title="Paste from clipboard and format">Paste</button>
       <button id="clearBtn" class="secondary">Clear</button>
       <span id="status" aria-live="polite"></span>
     </div>
@@ -32,16 +36,14 @@
       <summary>What it does</summary>
       <ul>
         <li>Finds lines labelled <code>SH</code>, <code>HU</code>, or stakes like <code>50</code>, <code>100</code>, <code>1K/2K</code>.</li>
-        <li>Outputs exactly:
+        <li>Outputs:
 <pre>6m {bb/100}bb/100 over {Hands} hands
 HU {bb/100}bb/100 over {Hands} hands
 --
 {Stake}NL {bb/100}bb/100 over {Hands} hands
 {yyyymmdd}</pre>
         </li>
-        <li>Only includes stake lines where <strong>Hands &gt; 10,000</strong>.</li>
-        <li>Understands hands like <code>193k</code>, <code>8.1k</code>, <code>2.5m</code>. Ignores header rows and tolerates tabs/spaces and repeated headers.</li>
-        <li>Rounds <code>bb/100</code> to 1 decimal (trims trailing <code>.0</code>). If input is empty, output is blank. Result is auto-copied to clipboard.</li>
+        <li>Includes stake lines only when <strong>Hands &gt; 10,000</strong>. Ignores headers. Rounds <code>bb/100</code> to 1 decimal. Auto-copies after Format; you can also click Copy.</li>
       </ul>
     </details>
   </div>
